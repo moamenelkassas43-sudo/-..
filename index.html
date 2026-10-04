@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>اتحاد الطلاب | التسجيل الرسمي</title>
+
+    <meta name="description"
+          content="منصة التسجيل الرسمية لاتحاد الطلاب">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- خلفية متحركة -->
+<div class="background-effects">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<!-- شاشة البداية -->
+<section id="welcomeScreen" class="screen active">
+
+    <div class="welcome-card">
+
+        <div class="logo-orb">
+            <div class="orb-ring"></div>
+            <span>✦</span>
+        </div>
+
+        <div class="mini-badge">
+            منصة اتحاد الطلاب
+        </div>
+
+        <h1>
+            اهلا بيك يا قائد 🫵🏻
+        </h1>
+
+        <p class="welcome-text">
+            أيوه أنت... أنت هنا في المكان
+            <br>
+            اللي بيدخل فيه لازم يستحمل
+            <strong>شغل جاااامد جدًا 🔥</strong>
+        </p>
+
+        <p class="small-text">
+            مستعد تبدأ رحلتك؟
+        </p>
+
+        <button class="main-btn" onclick="startRegistration()">
+            <span>ابدأ الرحلة</span>
+            <b>←</b>
+        </button>
+
+        <div class="welcome-founder">
+            <img
+                src="https://i.postimg.cc/8cYvWqqs/IMG20260924082419.jpg"
+                alt="مؤمن القصاص"
+            >
+
+            <div>
+                <small>المؤسس للموقع</small>
+                <strong>مؤمن القصاص</strong>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- الموقع -->
+<main id="app" class="app hidden">
+
+    <!-- الهيدر -->
+    <header class="topbar">
+
+        <div class="brand">
+            <div class="brand-icon">✦</div>
+
+            <div>
+                <strong>اتحاد الطلاب</strong>
+                <small>منصة التسجيل</small>
+            </div>
+        </div>
+
+        <div class="visitor-box">
+            <span>👁</span>
+            <div>
+                <small>زائر</small>
+                <strong id="visitorCount">0</strong>
+            </div>
+        </div>
+
+    </header>
+
+
+    <!-- المحتوى -->
+    <section class="content">
+
+        <!-- التقدم -->
+        <div class="progress-wrapper">
+
+            <div class="progress-top">
+                <span id="stepTitle">
+                    البيانات الأساسية
+                </span>
+
+                <span>
+                    <b id="currentStep">1</b>
+                    /
+                    <b id="totalSteps">5</b>
+                </span>
+            </div>
+
+            <div class="progress-bar">
+                <div id="progressFill"></div>
+            </div>
+
+        </div>
+
+
+        <!-- النموذج -->
+        <form id="registrationForm" autocomplete="off">
+
+            <!-- STEP 1 -->
+            <section class="form-step active" data-step="1">
+
+                <div class="section-heading">
+                    <span class="section-number">01</span>
+
+                    <div>
+                        <h2>خلينا نتعرف عليك</h2>
+                        <p>ابدأ بياناتك الأساسية</p>
+                    </div>
+                </div>
+
+
+                <div class="fields-grid">
+
+                    <div class="field full">
+                        <label>
+                            الاسم بالكامل
+                            <span>*</span>
+                        </label>
+
+                        <div class="input-box">
+                            <span>👤</span>
+                            <input
+                                id="fullName"
+                                type="text"
+                                placeholder="اكتب اسمك بالكامل"
+                                required
+                            >
+                        </div>
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            الصف الدراسي
+                            <span>*</span>
+                        </label>
+
+                        <div class="input-box">
+                            <span>🎓</span>
+
+                            <select id="className" required>
+                                <option value="">اختر الصف</option>
+                                <option>الصف الأول الثانوي</option>
+                                <option>الصف الثاني الثانوي</option>
+                                <option>الصف الثالث الثانوي</option>
+                                <option>أخرى</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            موقعك في الاتحاد
+                            <span>*</span>
+                        </label>
+
+                        <div class="input-box">
+                            <span>🏅</span>
+
+                            <select id="position" required>
+                                <option value="">اختر موقعك</option>
+                                <option>أمين</option>
+                                <option>أمين مساعد</option>
+                                <option>مقرر لجنة</option>
+                                <option>عضو اتحاد</option>
+                                <option>متطوع</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- STEP 2 -->
+            <section class="form-step" data-step="2">
+
+                <div class="section-heading">
+                    <span class="section-number">02</span>
+
+                    <div>
+                        <h2>اختار مجالك</h2>
+                        <p>المجال اللي شايف نفسك هتبدع فيه</p>
+                    </div>
+                </div>
+
+
+                <div class="committee-grid">
+
+                    <label class="committee-card">
+                        <input type="radio" name="committee" value="ديني">
+                        <div class="committee-content">
+                            <div class="committee-icon">☪</div>
+                            <div>
+                                <strong>ديني</strong>
+                                <small>قيم • أثر</small>
+                            </div>
+                            <i>✓</i>
+                        </div>
+                    </label>
+
+
+                    <label class="committee-card">
+                        <input type="radio" name="committee" value="ثقافي">
+                        <div class="committee-content">
+                            <div class="committee-icon">📚</div>
+                            <div>
+                                <strong>ثقافي</strong>
+                                <small>فكر • معرفة</small>
+                            </div>
+                            <i>✓</i>
+                        </div>
+                    </label>
+
+
+                    <label class="committee-card">
+                        <input type="radio" name="committee" value="علمي">
+                        <div class="committee-content">
+                            <div class="committee-icon">⚗</div>
+                            <div>
+                                <strong>علمي</strong>
+                                <small>ابتكار • اكتشاف</small>
+                            </div>
+                            <i>✓</i>
+                        </div>
+                    </label>
+
+
+                    <label class="committee-card">
+                        <input type="radio" name="committee" value="فني">
+                        <div class="committee-content">
+                            <div class="committee-icon">🎨</div>
+                            <div>
+                                <strong>فني</strong>
+                                <small>إبداع • تعبير</small>
+                            </div>
+                            <i>✓</i>
+                        </div>
+                    </label>
+
+
+                    <label class="committee-card">
+                        <input type="radio" name="committee" value="رياضي">
+                        <div class="committee-content">
+                            <div class="committee-icon">🏆</div>
+                            <div>
+                                <strong>رياضي</strong>
+                                <small>حماس • انضباط</small>
+                            </div>
+                            <i>✓</i>
+                        </div>
+                    </label>
+
+
+                    <label class="committee-card">
+                        <input type="radio" name="committee" value="اجتماعي">
+                        <div class="committee-content">
+                            <div class="committee-icon">🤝</div>
+                            <div>
+                                <strong>اجتماعي</strong>
+                                <small>تعاون • خدمة</small>
+                            </div>
+                            <i>✓</i>
+                        </div>
+                    </label>
+
+                </div>
+
+            </section>
+
+
+            <!-- STEP 3 -->
+            <section class="form-step" data-step="3">
+
+                <div class="section-heading">
+                    <span class="section-number">03</span>
+
+                    <div>
+                        <h2>إيه اللي تقدر تعمله؟</h2>
+                        <p>اختار كل المهارات اللي عندك</p>
+                    </div>
+                </div>
+
+
+                <div class="skills-list">
+
+                    <label class="skill-card">
+                        <input type="checkbox" name="skills" value="الشرح">
+                        <span class="skill-check">✓</span>
+                        <div>
+                            <strong>الشرح</strong>
+                            <small>أقدر أوصل المعلومة بطريقة بسيطة</small>
+                        </div>
+                    </label>
+
+
+                    <label class="skill-card">
+                        <input type="checkbox" name="skills" value="التصوير والتوثيق">
+                        <span class="skill-check">✓</span>
+                        <div>
+                            <strong>التصوير والتوثيق</strong>
+                            <small>توثيق الفعاليات واللحظات المهمة</small>
+                        </div>
+                    </label>
+
+
+                    <label class="skill-card">
+                        <input type="checkbox" name="skills" value="توزيع الورق وجمع البيانات">
+                        <span class="skill-check">✓</span>
+                        <div>
+                            <strong>توزيع الورق وجمع البيانات</strong>
+                            <small>تنظيم البيانات والمعلومات</small>
+                        </div>
+                    </label>
+
+
+                    <label class="skill-card">
+                        <input type="checkbox" name="skills" value="التنظيم">
+                        <span class="skill-check">✓</span>
+                        <div>
+                            <strong>التنظيم</strong>
+                            <small>تنظيم الفريق والفعاليات</small>
+                        </div>
+                    </label>
+
+
+                    <label class="skill-card">
+                        <input type="checkbox" name="skills" value="الإعلام والميديا">
+                        <span class="skill-check">✓</span>
+                        <div>
+                            <strong>الإعلام والميديا</strong>
+                            <small>كتابة وتصميم ونشر المحتوى</small>
+                        </div>
+                    </label>
+
+                </div>
+
+            </section>
+
+
+            <!-- STEP 4 -->
+            <section class="form-step" data-step="4">
+
+                <div class="section-heading">
+                    <span class="section-number">04</span>
+
+                    <div>
+                        <h2>آخر كام سؤال</h2>
+                        <p>علشان نعرفك أكتر</p>
+                    </div>
+                </div>
+
+
+                <div class="fields-grid">
+
+                    <div class="field full">
+
+                        <label>هوايتك إيه؟</label>
+
+                        <div class="input-box">
+                            <span>✨</span>
+
+                            <input
+                                id="hobby"
+                                type="text"
+                                placeholder="مثال: البرمجة، الإنشاد، القراءة..."
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <div class="field full">
+
+                        <label>
+                            إيه معرفتك بالاتحاد؟
+                        </label>
+
+                        <div class="input-box textarea-box">
+                            <span>💡</span>
+
+                            <textarea
+                                id="unionKnowledge"
+                                placeholder="احكيلنا تعرف إيه عن الاتحاد؟"
+                            ></textarea>
+                        </div>
+
+                    </div>
+
+
+                    <div class="field full">
+
+                        <label>
+                            اسم الشخص اللي عرفك بالاتحاد
+                        </label>
+
+                        <div class="input-box">
+                            <span>👥</span>
+
+                            <input
+                                id="introducedBy"
+                                type="text"
+                                placeholder="اكتب الاسم"
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <div class="field full">
+
+                        <label>
+                            قيّم مؤمن القصاص أمين عام الاتحاد
+                        </label>
+
+                        <div class="rating" id="rating">
+
+                            <button type="button" data-rating="1">★</button>
+                            <button type="button" data-rating="2">★</button>
+                            <button type="button" data-rating="3">★</button>
+                            <button type="button" data-rating="4">★</button>
+                            <button type="button" data-rating="5">★</button>
+
+                        </div>
+
+                        <input
+                            type="hidden"
+                            id="leaderRating"
+                            value=""
+                        >
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- STEP 5 -->
+            <section class="form-step" data-step="5">
+
+                <div class="section-heading">
+                    <span class="section-number">05</span>
+
+                    <div>
+                        <h2>راجع بياناتك</h2>
+                        <p>قبل ما تعتمد التسجيل</p>
+                    </div>
+                </div>
+
+
+                <div id="reviewBox" class="review-box"></div>
+
+
+                <div class="privacy-box">
+
+                    <span>🔐</span>
+
+                    <div>
+                        <strong>تنبيه الخصوصية</strong>
+
+                        <p>
+                            سيتم استخدام البيانات لأغراض التسجيل والتنظيم
+                            داخل المنصة فقط. لا تكتب أي بيانات حساسة
+                            مثل كلمات المرور أو الرقم القومي.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <label class="consent">
+
+                    <input
+                        type="checkbox"
+                        id="consent"
+                    >
+
+                    <span>
+                        أوافق على حفظ بيانات التسجيل واستخدامها
+                        لأغراض الاتحاد.
+                    </span>
+
+                </label>
+
+            </section>
+
+
+            <!-- الأزرار -->
+            <div class="navigation">
+
+                <button
+                    type="button"
+                    id="backBtn"
+                    class="secondary-btn"
+                    onclick="previousStep()"
+                >
+                    → السابق
+                </button>
+
+                <button
+                    type="button"
+                    id="nextBtn"
+                    class="main-btn"
+                    onclick="nextStep()"
+                >
+                    التالي
+                    <b>←</b>
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- شهادة النجاح -->
+    <section id="successScreen" class="success-screen hidden">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h2>تم التسجيل بنجاح 🎉</h2>
+
+        <p>
+            أهلاً بيك في فريق القادة
+        </p>
+
+
+        <div id="certificate" class="certificate">
+
+            <div class="certificate-border">
+
+                <div class="certificate-top">
+                    <span>✦</span>
+                    <span>اتحاد الطلاب</span>
+                    <span>✦</span>
+                </div>
+
+                <p class="certificate-small">
+                    شهادة تسجيل قائد
+                </p>
+
+                <h1>
+                    شهادة مشاركة
+                </h1>
+
+                <p>
+                    نشهد بأن
+                </p>
+
+                <h2 id="certificateName">
+                    -
+                </h2>
+
+                <p>
+                    قد أتم عملية التسجيل في منصة اتحاد الطلاب
+                </p>
+
+                <div class="certificate-info">
+
+                    <div>
+                        <small>اللجنة</small>
+                        <strong id="certificateCommittee">-</strong>
+                    </div>
+
+                    <div>
+                        <small>الموقع</small>
+                        <strong id="certificatePosition">-</strong>
+                    </div>
+
+                </div>
+
+                <div class="certificate-footer">
+
+                    <div>
+                        <small>رقم التسجيل</small>
+                        <strong id="certificateId">-</strong>
+                    </div>
+
+                    <div>
+                        <small>التاريخ</small>
+                        <strong id="certificateDate">-</strong>
+                    </div>
+
+                </div>
+
+                <div class="certificate-founder">
+                    المؤسس للموقع
+                    <strong>مؤمن القصاص</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="success-actions">
+
+            <button
+                class="main-btn"
+                onclick="printCertificate()"
+            >
+                🖨 طباعة الشهادة
+            </button>
+
+            <button
+                class="whatsapp-btn"
+                onclick="sendWhatsApp()"
+            >
+                💬 إرسال البيانات عبر واتساب
+            </button>
+
+        </div>
+
+        <button
+            class="restart-btn"
+            onclick="location.reload()"
+        >
+            تسجيل جديد
+        </button>
+
+    </section>
+
+
+    <!-- الفوتر -->
+    <footer>
+
+        <div class="footer-founder">
+
+            <img
+                src="https://i.postimg.cc/8cYvWqqs/IMG20260924082419.jpg"
+                alt="مؤمن القصاص"
+            >
+
+            <div>
+                <small>المؤسس للموقع</small>
+                <strong>مؤمن القصاص</strong>
+                <small>سفير اتحاد الدولي للشباب بأمريكا امين عامالاتحاد</small>
+            </div>
+
+        </div>
+
+        <p>
+            © <span id="year"></span>
+            Student Union Platform
+        </p>
+
+    </footer>
+
+</main>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
