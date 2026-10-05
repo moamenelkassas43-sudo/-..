@@ -1,169 +1,178 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة اتحاد الطلاب | القادة الجدد</title>
-    <!-- خطوط عربية فخمة -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
-    <!-- أيقونات FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- ربط ملف الاستايل الخارجى -->
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="منصة اتحاد طلاب المدرسة لتسجيل الطلاب والمشاركة في اللجان والأنشطة">
+<title>اتحاد طلاب المدرسة | منصة القادة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div class="main-card">
-        <!-- عداد الزوار -->
-        <div class="visitor-badge">
-            <i class="fa-solid fa-users"></i>
-            <span>عدد الزوار: <strong id="visitorCount">1</strong></span>
-        </div>
-
-        <!-- 1. واجهة الترحيب -->
-        <div id="step-intro" class="intro-section">
-            <h1 class="glow-title"><i class="fa-solid fa-crown"></i> أهلاً بيك يا قائد 🫵🏻</h1>
-            <div class="intro-text">
-                أيوا أنت! أنت هنا في المكان اللي يدخله لازم يستحمل **شغل جاااامد جداً** وبناء حقيقي للقيادة والتأثير! جاهز تخوض التجربة؟
-            </div>
-            <button class="btn" onclick="nextStep('step-intro', 'step-form1')">
-                ابدأ رحلة التسجيل الآن <i class="fa-solid fa-arrow-left"></i>
-            </button>
-        </div>
-
-        <!-- 2. النموذج الأول: البيانات الأساسية واللجان -->
-        <div id="step-form1" class="form-step">
-            <h2 style="color: var(--primary-gold); margin-bottom: 20px;"><i class="fa-solid fa-user-gear"></i> البيانات الأساسية</h2>
-            
-            <div class="form-group">
-                <label><i class="fa-solid fa-user"></i> الاسم الثلاثي / الرباعي:</label>
-                <input type="text" id="studentName" placeholder="أدخل اسمك بالكامل" required>
-            </div>
-
-            <div class="form-group">
-                <label><i class="fa-solid fa-school"></i> الفصل الدراسي:</label>
-                <input type="text" id="studentClass" placeholder="مثال: 1/2 أو ثاني ثانوي" required>
-            </div>
-
-            <div class="form-group">
-                <label><i class="fa-solid fa-sitemap"></i> المنصب المتقدم له في الاتحاد:</label>
-                <select id="studentRole" required>
-                    <option value="" disabled selected>اختر المنصب...</option>
-                    <option value="أمين الاتحاد">أمين الاتحاد</option>
-                    <option value="أمين مساعد">أمين مساعد</option>
-                    <option value="عضو لجنة">عضو لجنة</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label><i class="fa-solid fa-list-check"></i> اختيار اللجنة:</label>
-                <select id="committeeSelect" onchange="updateQuote()" required>
-                    <option value="" disabled selected>اختر اللجنة...</option>
-                    <option value="ديني وثقافي">اللجنة الدينية والثقافية</option>
-                    <option value="علمي">اللجنة العلمية</option>
-                    <option value="فني">اللجنة الفنية</option>
-                    <option value="رياضي">اللجنة الرياضية</option>
-                    <option value="اجتماعي">اللجنة الاجتماعية</option>
-                </select>
-                <!-- كلمتان تعبران عن المجال -->
-                <div id="committeeQuote" class="committee-quote"></div>
-            </div>
-
-            <button class="btn" onclick="validateStep1()">
-                المتابعة للأسئلة القيادية <i class="fa-solid fa-arrow-left"></i>
-            </button>
-        </div>
-
-        <!-- 3. النموذج الثاني: الأسئلة القيادية -->
-        <div id="step-form2" class="form-step">
-            <h2 style="color: var(--primary-gold); margin-bottom: 20px;"><i class="fa-solid fa-brain"></i> الأسئلة القيادية والمهارات</h2>
-
-            <div class="form-group">
-                <label><i class="fa-solid fa-users-gear"></i> لو أنت في فريق اتحاد الطلاب، بتحب دورك يكون إيه؟</label>
-                <select id="teamRole" required>
-                    <option value="تشرح وتقدم وتتكلم">تشرح وتلقي وتتكلم أمام الجميع</option>
-                    <option value="تصور وتوثق اللحظات">تصور وتوثق اللحظات والإنجازات</option>
-                    <option value="توزع الورق وتجمع البيانات">توزع الورق، تنظم وتجمع البيانات</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label><i class="fa-solid fa-rocket"></i> بتحب تنفذ أنشطة أكتر في أي مجال؟</label>
-                <select id="favActivity" required>
-                    <option value="الديني والثقافي">الديني والثقافي</option>
-                    <option value="العلمي">العلمي والتكنولوجي</option>
-                    <option value="الفني">الفني والإبداعي</option>
-                    <option value="الرياضي">الرياضي والمقومات البدنية</option>
-                    <option value="الاجتماعي">الاجتماعي والخدمي</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label><i class="fa-solid fa-heart"></i> ما هي هوايتك المفضلة؟</label>
-                <input type="text" id="hobby" placeholder="اكتب هوايتك هنا..." required>
-            </div>
-
-            <div class="form-group">
-                <label><i class="fa-solid fa-circle-info"></i> تعرف حاجة عن الاتحاد؟ ومين الشخص اللي عرفك عليه؟</label>
-                <textarea id="unionKnowledge" rows="3" placeholder="اكتب معرفتك بالاتحاد واسم الشخص الذي عرفك..." required></textarea>
-            </div>
-
-            <div class="form-group">
-                <label><i class="fa-solid fa-star"></i> تقييمك لأداء/رؤية مؤمن القصاص (أمين عام الاتحاد):</label>
-                <select id="leaderRating" required>
-                    <option value="ممتاز وقائد ملهم">ممتاز وقائد ملهم 🔥</option>
-                    <option value="جيد جداً ويسعى للتطوير">جيد جداً ويسعى للتطوير 👍</option>
-                    <option value="مقبول ونطمح للأفضل">مقبول ونطمح للأفضل 💡</option>
-                </select>
-            </div>
-
-            <button class="btn" onclick="generateResult()">
-                حفظ البيانات وإنشاء الشهادة <i class="fa-solid fa-certificate"></i>
-            </button>
-        </div>
-
-        <!-- 4. النتيجة والشهادة والإرسال -->
-        <div id="step-result" class="form-step">
-            <!-- الشهادة الرسمية -->
-            <div class="certificate-box" id="certificate">
-                <i class="fa-solid fa-award" style="font-size: 3rem; color: var(--primary-gold);"></i>
-                <h2>بطاقة انضمام قائد</h2>
-                <p>يشهد اتحاد الطلاب بذوق رفيع بانضمام القيادي/ة:</p>
-                <h3 id="certName">اسم الطالب</h3>
-                <p>بفصل: <strong id="certClass">--</strong> | منصب: <strong id="certRole">--</strong></p>
-                <p style="margin-top:10px; font-size: 0.9rem; color: #475569;">
-                    "أنت الآن جزء من فكر قيادي لا يعرف المستحيل"
-                </p>
-                <div class="certificate-footer">
-                    <div>
-                        <strong>تاريخ التسجيل:</strong><br>
-                        <span id="certDate"></span>
-                    </div>
-                    <div style="text-align: left;">
-                        <strong>مؤسس الموقع والأمين العام:</strong><br>
-                        <span style="color: var(--primary-blue); font-weight: bold;">مؤمن القصاص</span><br>
-                        <small style="font-size: 0.7rem;">سفير الاتحاد الدولي للشباب بأمريكا</small>
-                    </div>
-                </div>
-            </div>
-
-            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                <button class="btn" style="background: #25D366; color: white;" onclick="sendToWhatsApp()">
-                    <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> إرسال البيانات فوراً للواتساب
-                </button>
-                <button class="btn" style="background: #3b82f6; color: white;" onclick="window.print()">
-                    <i class="fa-solid fa-print"></i> طباعة الشهادة
-                </button>
-            </div>
-        </div>
-
-        <!-- حقوق المؤسس -->
-        <div class="site-footer">
-            تطوير وتأسيس: <strong>مؤمن القصاص</strong> - سفير الاتحاد الدولي للشباب بأمريكا &copy; 2026
-        </div>
-    </div>
-
-    <!-- ربط ملف السكريبت الخارجي -->
-    <script src="script.js"></script>
+<div class="background-grid"></div>
+<header class="navbar">
+<a href="#home" class="brand">
+<div class="brand-icon"><i data-lucide="users"></i></div>
+<div class="brand-text"><strong>اتحاد طلاب المدرسة</strong><span>معًا نصنع الفرق</span></div>
+</a>
+<nav>
+<a href="#home" class="active">الرئيسية</a>
+<a href="#about">حول الاتحاد</a>
+<a href="#contact">تواصل معنا</a>
+</nav>
+<button class="theme-btn" id="themeBtn"><i data-lucide="moon"></i></button>
+</header>
+<main id="home">
+<section class="hero">
+<div class="hero-content">
+<div class="hero-text">
+<div class="small-label"><span class="label-dot"></span>منصة اتحاد طلاب المدرسة</div>
+<h1>أهلًا بيك يا قائد 🫵🏻</h1>
+<h2>أيوه أنت... أنت!</h2>
+<p>هنا المكان اللي اللي بيدخل فيه لازم يستحمل <strong>شغل جاااامد جدًا 🔥</strong></p>
+<p class="hero-description">مش مجرد تسجيل... هنا بتبدأ رحلة جديدة من القيادة والمشاركة وصناعة الأثر.</p>
+<button class="main-btn" onclick="startRegistration()">ابدأ رحلتك القيادية <i data-lucide="arrow-left"></i></button>
+</div>
+<div class="profile-card">
+<div class="profile-light"></div>
+<div class="profile-crown"><i data-lucide="crown"></i></div>
+<div class="profile-photo">
+<img src="https://i.postimg.cc/8cYvWqqs/IMG20260924082419.jpg" alt="مؤمن هشام سعد القصاص">
+<div class="photo-glow"></div>
+</div>
+<h3>مؤمن هشام سعد القصاص</h3>
+<div class="profile-tags">
+<div class="profile-tag"><div class="tag-icon"><i data-lucide="school"></i></div><span>أمين اتحاد مدرسة الشهيد محمد فؤاد</span></div>
+<div class="profile-tag"><div class="tag-icon"><i data-lucide="users"></i></div><span>أمين اتحاد سيدي سالم</span></div>
+<div class="profile-tag"><div class="tag-icon"><i data-lucide="lightbulb"></i></div><span>المبتكر الصغير • المرحلة الثانوية</span></div>
+</div>
+<div class="profile-divider"></div>
+<p class="profile-quote">نصنع قادة... ونترك أثرًا.</p>
+</div>
+</div>
+<div class="stats-panel">
+<div class="stat-item"><div class="stat-icon"><i data-lucide="shield-check"></i></div><div><strong>اتحاد قوي</strong><span>من أجلك</span></div></div>
+<div class="stat-item"><div class="stat-icon"><i data-lucide="lightbulb"></i></div><div><strong>أفكارك</strong><span>تصنع التغيير</span></div></div>
+<div class="stat-item"><div class="stat-icon"><i data-lucide="users"></i></div><div><strong>تواصل</strong><span>مع زملائك</span></div></div>
+<div class="stat-item"><div class="stat-icon"><i data-lucide="star"></i></div><div><strong>فرص تطوير</strong><span>ومهارات جديدة</span></div></div>
+<div class="visitor-counter"><span>عدد الزوار</span><strong id="visitorCount">0</strong><small><b></b> متصل الآن</small></div>
+</div>
+</section>
+<section id="about" class="about-section">
+<div class="section-title"><span>ليـه أنت هنا؟</span><h2>مش مجرد استمارة تسجيل</h2><p>هنا بنحاول نعرف إمكانياتك واهتماماتك علشان نعرف إزاي نقدر نشتغل مع بعض.</p></div>
+<div class="about-grid">
+<div class="about-card"><div class="about-icon"><i data-lucide="users-round"></i></div><h3>قيادة</h3><p>شارك واقترح وخد مسؤولية حقيقية.</p></div>
+<div class="about-card"><div class="about-icon"><i data-lucide="rocket"></i></div><h3>مشاركة</h3><p>كن جزءًا من الأنشطة والفعاليات.</p></div>
+<div class="about-card"><div class="about-icon"><i data-lucide="sparkles"></i></div><h3>أثر</h3><p>خلي وجودك في الاتحاد له معنى.</p></div>
+</div>
+</section>
+<section id="registration" class="registration-section hidden">
+<div class="registration-head">
+<div class="step-number" id="stepNumber">01</div>
+<div><span>رحلتك القيادية</span><h2 id="stepTitle">خلينا نتعرف عليك 👋🏻</h2></div>
+</div>
+<div class="progress"><div id="progressBar"></div></div>
+<form id="registrationForm">
+<div class="step active-step" data-step="1">
+<div class="input-grid">
+<div class="input-box full"><label>الاسم بالكامل</label><input id="name" type="text" placeholder="اكتب اسمك بالكامل" required></div>
+<div class="input-box"><label>الصف الدراسي</label><input id="grade" type="text" placeholder="مثال: الصف الثاني الثانوي" required></div>
+<div class="input-box"><label>الفصل</label><input id="classroom" type="text" placeholder="مثال: 2/4" required></div>
+<div class="input-box"><label>رقم الهاتف</label><input id="phone" type="tel" placeholder="اختياري"></div>
+<div class="input-box"><label>البريد الإلكتروني</label><input id="email" type="email" placeholder="example@email.com"></div>
+</div>
+<h3 class="question-title">منصبك في الاتحاد</h3>
+<div class="choice-grid">
+<label class="choice"><input type="radio" name="position" value="أمين"><span>أمين</span></label>
+<label class="choice"><input type="radio" name="position" value="أمين مساعد"><span>أمين مساعد</span></label>
+<label class="choice"><input type="radio" name="position" value="عضو"><span>عضو</span></label>
+</div>
+</div>
+<div class="step" data-step="2">
+<h3 class="question-title">اختار لجنتك 🎯</h3>
+<p class="question-description">اختار المجال اللي شايف نفسك تقدر تضيف فيه.</p>
+<div class="committee-grid">
+<label class="committee"><input type="checkbox" name="committee" value="دينية وثقافية"><i data-lucide="book-open"></i><strong>دينية وثقافية</strong><small>وعي وقيم</small></label>
+<label class="committee"><input type="checkbox" name="committee" value="علمية"><i data-lucide="flask-conical"></i><strong>علمية</strong><small>فكر وابتكار</small></label>
+<label class="committee"><input type="checkbox" name="committee" value="فنية"><i data-lucide="palette"></i><strong>فنية</strong><small>إبداع وتعبير</small></label>
+<label class="committee"><input type="checkbox" name="committee" value="رياضية"><i data-lucide="trophy"></i><strong>رياضية</strong><small>قوة وانضباط</small></label>
+<label class="committee"><input type="checkbox" name="committee" value="اجتماعية"><i data-lucide="heart-handshake"></i><strong>اجتماعية</strong><small>خدمة وتعاون</small></label>
+</div>
+</div>
+<div class="step" data-step="3">
+<h3 class="question-title">لو أنت في تيم... تحب تعمل إيه؟ 🚀</h3>
+<p class="question-description">ممكن تختار أكثر من اختيار.</p>
+<div class="choice-grid">
+<label class="choice large"><input type="checkbox" name="skills" value="الشرح والتقديم"><span>🎤 الشرح والتقديم</span></label>
+<label class="choice large"><input type="checkbox" name="skills" value="التصوير والتوثيق"><span>📸 التصوير والتوثيق</span></label>
+<label class="choice large"><input type="checkbox" name="skills" value="التنظيم وجمع البيانات"><span>📋 التنظيم وجمع البيانات</span></label>
+</div>
+</div>
+<div class="step" data-step="4">
+<h3 class="question-title">بتحب تنفذ أنشطة في مجال إيه؟ 🔥</h3>
+<div class="mini-committees">
+<label><input type="checkbox" name="activities" value="دينية وثقافية">دينية وثقافية</label>
+<label><input type="checkbox" name="activities" value="علمية">علمية</label>
+<label><input type="checkbox" name="activities" value="فنية">فنية</label>
+<label><input type="checkbox" name="activities" value="رياضية">رياضية</label>
+<label><input type="checkbox" name="activities" value="اجتماعية">اجتماعية</label>
+</div>
+</div>
+<div class="step" data-step="5">
+<h3 class="question-title">عرفنا أكتر عنك ✨</h3>
+<div class="textarea-group"><label>عندك هواية إيه؟</label><textarea id="hobbies" placeholder="اكتب هواياتك واهتماماتك..."></textarea></div>
+<div class="textarea-group"><label>تعرف إيه عن اتحاد الطلاب؟</label><textarea id="unionKnowledge" placeholder="اكتب اللي تعرفه..."></textarea></div>
+<div class="input-box"><label>مين الشخص اللي عرفك على الاتحاد؟</label><input id="introducedBy" type="text" placeholder="اكتب الاسم"></div>
+</div>
+<div class="step" data-step="6">
+<h3 class="question-title">رأيك يهمنا ⭐</h3>
+<p class="question-description">تقييمك لمؤمن القصاص — أمين عام الاتحاد</p>
+<div class="rating" id="rating">
+<button type="button" data-value="1">★</button>
+<button type="button" data-value="2">★</button>
+<button type="button" data-value="3">★</button>
+<button type="button" data-value="4">★</button>
+<button type="button" data-value="5">★</button>
+</div>
+<textarea id="message" placeholder="لو عندك كلمة أو اقتراح لمؤمن، اكتبه هنا..."></textarea>
+</div>
+<div class="step" data-step="7">
+<div class="review-icon">✓</div>
+<h2>راجع بياناتك قبل الإرسال</h2>
+<div id="review"></div>
+<button type="submit" class="submit-btn"><span>🚀 إرسال التسجيل الآن</span><i data-lucide="send"></i></button>
+<p class="submit-note">سيتم فتح WhatsApp برسالة جاهزة إلى إدارة الاتحاد.</p>
+</div>
+<div class="form-navigation">
+<button type="button" id="prevBtn" class="secondary-btn" onclick="previousStep()">السابق</button>
+<button type="button" id="nextBtn" class="next-btn" onclick="nextStep()">التالي <i data-lucide="arrow-left"></i></button>
+</div>
+</form>
+</section>
+<section id="success" class="success-section hidden">
+<div class="success-card">
+<div class="success-icon">✓</div>
+<span>تم التسجيل بنجاح</span>
+<h2 id="certificateName">أهلًا بيك يا قائد</h2>
+<p>صوتٌ يصنع فرقًا، وطموحٌ يصنع مستقبلًا.</p>
+<div class="certificate">
+<small>شهادة تقدير</small>
+<h3 id="certificateStudent">اسم الطالب</h3>
+<p>نُقدّم لك هذه الشهادة تقديرًا لمشاركتك ورغبتك في صناعة أثر داخل اتحاد الطلاب.</p>
+<strong>مؤمن القصاص</strong>
+</div>
+<button class="main-btn" onclick="window.print()">طباعة الشهادة <i data-lucide="printer"></i></button>
+</div>
+</section>
+</main>
+<footer id="contact">
+<strong>اتحاد طلاب المدرسة</strong>
+<span>المؤسس: مؤمن القصاص</span>
+<span>سفير الاتحاد الدولي للشباب – الولايات المتحدة الأمريكية</span>
+</footer>
+<script src="script.js"></script>
 </body>
-</html>
+                                                                                  </html>
